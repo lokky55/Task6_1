@@ -9,11 +9,8 @@ public class StatsService {
         return sum;
     }
 
-    public int averageSale(long[] sales) {    // Средняя сумма продаж за месяц в году
-        int sum = 0;
-        for (long sale : sales) {
-            sum += sale;
-        }
+    public long averageSale(long[] sales) {    // Средняя сумма продаж за месяц в году
+        long sum = sumSales(sales);
         return sum / 12;
     }
 
@@ -38,10 +35,7 @@ public class StatsService {
     }
 
     public int underAverage(long[] sales) {     // Метод поиска кол-ва месяцев с продажами ниже средней за год
-        int sum = 0;
-        for (long sale : sales) {
-            sum += sale;
-        }
+        long sum = sumSales(sales);
         int count = 0;
         for (long sale : sales) {
             if (sale < sum / 12) {
@@ -52,10 +46,7 @@ public class StatsService {
     }
 
     public int aboveAverage(long[] sales) {      // Метод поиска кол-ва месяцев с продажами выше средней за год
-        int sum = 0;
-        for (long sale : sales) {
-            sum += sale;
-        }
+        long sum = sumSales(sales);
         int count = 0;
         for (long sale : sales) {
             if (sale > sum / 12) {

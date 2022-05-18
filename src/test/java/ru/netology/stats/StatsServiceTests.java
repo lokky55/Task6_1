@@ -17,7 +17,7 @@ public class StatsServiceTests {
     @Test
     public void FindAverage() {
         StatsService service = new StatsService();
-        int actual = service.averageSale(sales);
+        long actual = service.averageSale(sales);
         int expected = 15;
         Assertions.assertEquals(actual, expected);
     }
