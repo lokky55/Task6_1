@@ -13,13 +13,15 @@ public class StatsService {
         long sum = sumSales(sales);
         return sum / 12;
     }
+//    public  long averageSale(long[] sales) {  // альтернативный код поиска среднего
+//        return sumSales(sales) / sales.length;
+//    }
 
     public int maxSaleMonth(long[] sales) {    // Ищем последний месяц с максимальной продажей
         int maxi = 0;
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] >= sales[maxi]) {    // Если искать первый месяц с максимальной продажей будет ">"
+            if (sales[i] >= sales[maxi])     // Если искать первый месяц с максимальной продажей будет ">"
                 maxi = i;
-            }
         }
         return maxi + 1;
     }
@@ -27,18 +29,26 @@ public class StatsService {
     public int minSaleMonth(long[] sales) {    // Ищем месяц с минимумумом продаж
         int mini = 0;
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] < sales[mini]) {
+            if (sales[i] < sales[mini])
                 mini = i;
-            }
         }
         return mini + 1;
     }
 
-    public int underAverage(long[] sales) {     // Метод поиска кол-ва месяцев с продажами ниже средней за год
-        long sum = sumSales(sales);
+//    public int underAverage(long[] sales) {     // Метод поиска кол-ва месяцев с продажами ниже средней за год
+//        long sum = sumSales(sales);
+//        int count = 0;
+//        for (long sale : sales) {
+//            if (sale < sum / 12)
+//                count++;
+//        }
+//        return count;
+//    }
+    public int underAverage(long[] sales) {
+        long avg = averageSale(sales);
         int count = 0;
         for (long sale : sales) {
-            if (sale < sum / 12) {
+            if (sale < avg) {           // можно записать if (sale < averageSale(sales)) но загрузит компилятор
                 count++;
             }
         }
@@ -49,9 +59,8 @@ public class StatsService {
         long sum = sumSales(sales);
         int count = 0;
         for (long sale : sales) {
-            if (sale > sum / 12) {
+            if (sale > sum / 12)
                 count++;
-            }
         }
         return count;
     }
